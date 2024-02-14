@@ -1,0 +1,36 @@
+{% extends 'jobseeker/base.html' %}
+<!-- {% load static %} -->
+{% block body %}
+<h3 class="mt-4">{{request.user}}</h3>
+{%for job in job%}
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4 d-flex justify-content-center align-items-center px-2 ">
+        {%if job.poster%}
+        <img src="{{job.poster.url}}" class="img-fluid rounded-start" alt="...">
+        <!-- img-fluid rounded start is for rounding image corner at astart -->
+        {%endif%}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title fw-bold ">Jobname:{{job.jobname}}</h5>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small><p class="card-text">
+            <i class="fa-regular fa-clock"></i> Full time
+            <i class="fa-solid fa-sack-dollar" style="color: #3f4040;"></i> {{job.salary}}
+            <!-- fa-solid fa-sack-dollar is for icons of clock and money bag -->
+            <i class="fa-solid fa-building" style="color: #4a4a4a;"></i>{{job.companyname}}
+
+        </p></p>
+        
+        <a href="{% url 'jobview' job.id %}" class="btn btn-light">View</a>
+        <a href="{% url 'jobapply' job.id %}" class="btn btn-light">Applynow</a>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+
+{%endfor%}
+
+{% endblock %}

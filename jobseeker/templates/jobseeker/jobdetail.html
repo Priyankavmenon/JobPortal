@@ -1,0 +1,33 @@
+{% extends 'jobseeker/base.html' %}
+<!-- {% load static %} -->
+{% block body %}
+<h3 class="mt-4">{{request.user}}</h3>
+<div class="card" style="width: 18rem;">
+    
+    <div class="card-body">
+      <h5 class="card-title fw-bold">{{jobview.jobname}}</h5>
+ </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Company name:{{jobview.companyname}}</li>
+      <li class="list-group-item">Experience:{{jobview.experience}}years</li>
+      <li class="list-group-item">Salary:{{jobview.salary}}</li>
+      <li class="list-group-item">Qualification:{{jobview.qualification}}</li>
+      <li class="list-group-item">Skill:{{jobview.skill}}</li>
+      <li class="list-group-item">Category:{{jobview.category}}</li>
+    </ul>
+    <div class="card-body d-flex justify-content-center">
+      <form action="{% url 'jobapply' jobview.id %}" method="post">
+          {%csrf_token%}
+          <button type="submit" class="btn-primary">Apply</button>
+      </form>
+      
+
+      
+  
+  </div>
+
+
+
+
+
+{%endblock%}

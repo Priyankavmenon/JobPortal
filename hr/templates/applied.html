@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block mainblock %}
+<form action="" method="post" >{%csrf_token%}
+    {% for i in data %}
+    <div class="">
+        <div class="card">
+          <!-- <img src="..." class="card-img-top" alt="..."> -->
+          <div class="card-body">
+            
+            <h5 class="card-title">{{i.jobs}}</h5>
+            <p class="card-text">{{i.student.first_name}}</p>
+            <p class="card-text"><small class="text-muted">{{i.student.last_name}}</small></p>
+               <p class="card-text"><small class="text-muted">{{i.student.email}}</small></p>
+              
+{%if i.applicantdetails.resume%}
+            <img src="{{i.applicantdetails.resume.url}}" class="card-img-top" alt="...">
+            {%endif%}
+            
+          </div>
+        </div>
+  
+   {%endfor%}
+</form>
+{%endblock%}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{%if form.errors%}
+{{form.errors}}
+{%endif%}
+{%block mainblock%}
+<!-- <form action="" method="post" class="bg-white m-5 p-5 w-75 rounded-3" enctype="multipart/form-data"> -->
+  {%csrf_token%}
+
+<div class="card mb-3" class="w-75 bg-white m-5 p-5 w-75 rounded-3" style="height: 190px;">
+    {%for i in qs%}
+    <div class="row g-0">
+      <div class="col-md-4 ">
+        {%if i.poster %}
+        <img src="{{i.poster.url}}" class="img-fluid rounded-start h-25" alt="...">
+        {%endif%}  
+    </div>
+      <div class="col-md-5">
+        <div class="card-body">
+            
+
+          <h5 class="card-title">{{i.jobname}}</h5>
+          <h5 class="card-text">{{i.companyname}}</h5>
+          <!-- <h5 class="card-title">{{i.experience}}</h5>
+          <h5 class="card-title">{{i.salary}}</h5>
+          <h5 class="card-title">{{i.qualification}}</h5>
+          <h5 class="card-title">{{i.skills}}</h5> -->
+          <h5 class="card-text">{{i.category}}</h5>
+
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-body">
+        <a href="" class="btn btn-primary btn-sm my-2">View</a>
+        
+        <a href="{%url 'deletejob' i.id%}" class="btn btn-primary btn-sm my-2">Delete</a>
+      
+        <a href="{%url 'edit' i.id%}" class="btn btn-primary btn-sm my-2">Update</a>
+      </div>
+    </div>
+    </div>
+  
+  </div>
+<!-- </form> -->
+
+{%endfor%}
+{%endblock%}
+
+
+
+
+
+          

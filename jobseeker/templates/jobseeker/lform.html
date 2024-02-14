@@ -1,0 +1,21 @@
+{% extends 'jobseeker/base.html' %}
+{% block body %}
+{%if form.errors%}
+    {{form.errors}}
+{%endif%}
+        <form action="" method="post" class="bg-white m-5 p-5 w-50 rounded-3">
+            {%csrf_token%}
+            <p class="fw-bold fs-4 ">Applicant Login</p>
+            <hr class="mb-5 w-35 border-4">
+            <div class="text-center">
+                <input type="text" class="form-control  text-center" name="username" placeholder="enter username"><br>
+                <input type="text" class="form-control  text-center" name="password" placeholder="Password"><br>
+
+                <button type="submit" class="btn btn-dark w-50 mt-5 mb-5">Login</button>
+                <br>
+                <p>New User? Create an Account</p>
+                <a href="{% url 'register' %}" class="btn btn-outline-dark w-25">Register</a>
+            </div>
+        </form>
+   
+{% endblock %}
